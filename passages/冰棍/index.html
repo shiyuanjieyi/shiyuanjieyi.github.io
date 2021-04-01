@@ -192,7 +192,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">animation</span>: moving <span class="number">100s</span> linear infinite;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> moving &#123;</span><br><span class="line">    <span class="selector-tag">to</span> &#123;</span><br><span class="line">        <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">1000vh</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后，增加交互效果，当鼠标悬停时才播放动画：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: paused;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ice-lolly</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: running;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>大功告成了！当然你可以在<a href="https://codepen.io/ThinkerZhang/pen/bZVRpb" target="_blank" rel="noopener">这里</a>看到源码。</p>
+<p>大功告成了！当然你可以在<a href="https://codepen.io/ThinkerZhang/pen/zYNoXEy" target="_blank" rel="noopener">这里</a>看到源码。</p>
 <p>（完）</p>
 
   </article>
@@ -324,7 +324,7 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="/passages/前端经典面试题总结/" data-enable="true">
+    <a href="/passages/剪刀/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
     <a href="/passages/红绿灯/" data-enable="true">
