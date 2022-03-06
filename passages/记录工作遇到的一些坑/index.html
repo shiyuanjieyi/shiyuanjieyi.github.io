@@ -6,7 +6,7 @@
   <meta name="author" content="Thinker Zhang">
   
   
-  <title>归档 | Thinker的个人网站</title>
+  <title>记录工作遇到的一些坑 | Thinker的个人网站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -40,7 +40,7 @@
     welcome: {"enable":true,"interval":30},
     start_time: "2019-03-15",
     passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "Thinker Zhang",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -158,77 +158,71 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">归档: 16篇</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2022-03-06
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    记录工作遇到的一些坑
+  </h1>
   
-    
-      <h3 class="timeline-subtitle">2022</h3>
-    
-    <div class="timeline-item">
-      <time>2022-03-06</time>
-      <a target="_self" href="/passages/记录工作遇到的一些坑/">记录工作遇到的一些坑</a>
-    </div>
+  <article class="passage-article">
+    <h3 id="1-web端首页因存在定时器5分钟请求一次接口，导致页面一旦打开，token永不失效"><a href="#1-web端首页因存在定时器5分钟请求一次接口，导致页面一旦打开，token永不失效" class="headerlink" title="1.web端首页因存在定时器5分钟请求一次接口，导致页面一旦打开，token永不失效"></a>1.web端首页因存在定时器5分钟请求一次接口，导致页面一旦打开，token永不失效</h3><p>产品需要在首页每5分钟自动刷新数据，因此我在首页加了定时器，但是系统本身就有在token失效前30分钟自动刷新token的逻辑，于是就导致，只要系统打开，就一直保持着登录状态，我个人觉得问题不大，但是测试认为这是一个安全问题，需要解决。</p>
+<p>好吧，我就页面角度考虑，能不能切换首页到其他页面的时候，定时器自动关闭呢，于是我查相关资料，发现有个Web API 叫 visiablitychange 的监听函数，它一般用在文档可见时开始播放音乐，不可见时暂停音乐，例子如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"visibilitychange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">document</span>.visibilityState === <span class="string">'visible'</span>) &#123;</span><br><span class="line">    backgroundMusic.play();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    backgroundMusic.pause();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>于是我就套用在了我的系统里，部分代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"visibilitychange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">document</span>.visibilityState === <span class="string">'visible'</span>) &#123;</span><br><span class="line">    setTimer();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    clearTimer();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>但是测试还不满足，他希望我在切换其他tab页的时候，也需要关闭定时器，由于我们的系统框架用的是 vue+elementUI，而且还用到了keep-alive 这个组件，查询官方文档得知有activated 和 deactivated 两个生命周期，于是加上这部分代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">activated() &#123;</span><br><span class="line">  setTimer();</span><br><span class="line">&#125;,</span><br><span class="line">deactivated() &#123;</span><br><span class="line">  clearTimer();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时本以为大功告成，结果自测发现有个bug，如果我先切换到其他tab页，然后再隐藏文档，发现 clearTimer 会执行两次，然后当文档可见时，再切换回首页，此时 setTimer 也会执行两次，这不是我的本意，因此我还需要一个变量，记录首页当前是否 activated，最终代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="built_in">document</span>.addEventListener(<span class="string">"visibilitychange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'deactivated'</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.visibilityState === <span class="string">'visible'</span>) &#123;</span><br><span class="line">      setTimer();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      clearTimer();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">activated() &#123;</span><br><span class="line">  <span class="keyword">this</span>.status = <span class="string">'activated'</span></span><br><span class="line">  setTimer();</span><br><span class="line">&#125;,</span><br><span class="line">deactivated() &#123;</span><br><span class="line">  <span class="keyword">this</span>.status = <span class="string">'deactivated'</span></span><br><span class="line">  clearTimer();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-web端首页因存在定时器5分钟请求一次接口，导致页面一旦打开，token永不失效"><span class="toc-text">1.web端首页因存在定时器5分钟请求一次接口，导致页面一旦打开，token永不失效</span></a></li></ol>
+  </div>
+</aside>
   
-    
-    <div class="timeline-item">
-      <time>2022-03-06</time>
-      <a target="_self" href="/passages/微信小程序蓝牙打印总结/">微信小程序蓝牙打印总结</a>
-    </div>
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">https://shiyuanjieyi.cn/passages/记录工作遇到的一些坑/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
   
-    
-    <div class="timeline-item">
-      <time>2022-01-17</time>
-      <a target="_self" href="/passages/CSS-Reset/">CSS Reset</a>
-    </div>
-  
-    
-      <h3 class="timeline-subtitle">2021</h3>
-    
-    <div class="timeline-item">
-      <time>2021-04-22</time>
-      <a target="_self" href="/passages/虾皮一面相关面试题/">虾皮一面相关面试题</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2021-04-20</time>
-      <a target="_self" href="/passages/27-移除元素/">27.移除元素</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2021-03-29</time>
-      <a target="_self" href="/passages/前端经典面试题总结/">前端经典面试题总结</a>
-    </div>
-  
-    
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-04-02</time>
-      <a target="_self" href="/passages/雪花/">雪花</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-04-01</time>
-      <a target="_self" href="/passages/剪刀/">剪刀</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-03-31</time>
-      <a target="_self" href="/passages/冰棍/">冰棍</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-03-30</time>
-      <a target="_self" href="/passages/红绿灯/">红绿灯</a>
-    </div>
   
 </div>
+
     </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
     
     <div class="site-footer-wrapper">
   <footer class="site-footer">
@@ -323,16 +317,16 @@
     <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/archives/page/2/" data-enable="true">
+    <a href="/passages/微信小程序蓝牙打印总结/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
-      <a href="javascript:void(0);" data-enable="false">
+      <a href="#site-comment" data-enable="true">
         <i class="fa fa-commenting"></i>
       </a>
     
