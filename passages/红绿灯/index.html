@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>红绿灯 | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="css," />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-03-30
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    红绿灯
+  </h1>
+  
+  <article class="passage-article">
+    <p>今天给大家分享一个很简单有趣的红绿灯演示动画，效果图如下：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/1/1693758b8b522777~tplv-t2oaga2asx-image.image" alt="1"></p>
+<p>乍一看你可能会觉得纯CSS动画可能做不到，实际上知道了原理还是比较简单的。</p>
+<p>首先这里有3盏灯，我们为每一盏灯写了一个<code>animation</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;traffic-light&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;light red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;light amber&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;light green&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.red</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: red <span class="number">10s</span> linear infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.amber</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: amber <span class="number">10s</span> linear infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.green</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: green <span class="number">10s</span> linear infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面样式里看出，每盏灯的 animation 持续时间都是10s，那动画不断循环播放的时候，它们之间就会一直保持同步的时间关系。</p>
+<p>参照下面的图，从功能出发，很容易理解3盏灯的动画之间的逻辑关系（在这里逻辑关系就是指的它们之间的时间关系）</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/1/169375449dcae584~tplv-t2oaga2asx-image.image" alt="2"></p>
+<p>从图中看，一共分5个阶段或者说5个步骤，在每个阶段，不同的灯处于 on 或者 off 的状态。那么我们很明显就是将0% - 100%的时间跨度分成5份,每20%为一个状态，设置不同状态下的参数。</p>
+<p>我们从红灯开始看。0%-20% 和 20%-40%，这两个阶段红灯一直亮的，其余的时间都是黑的。那我们可以这么设置：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> red &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">2%</span>, <span class="number">40%</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">42%</span>, <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有2%的间隙，是为了让灯看起来有点渐变的效果。可以按照20%&#96;&#96;40%去写</p>
+<p>同理，黄灯是20%-40%和80%-100%亮，其余时间不亮。这里也加了2%的间隙。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> amber &#123;</span><br><span class="line">  <span class="number">0%</span>, <span class="number">20%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">22%</span>, <span class="number">40%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#FF7E00</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">42%</span>, <span class="number">80%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">82%</span>, <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#FF7E00</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>绿灯也很简单，按照图上显示的，来设置它。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">@keyframes</span> green &#123;</span><br><span class="line">  <span class="number">0%</span>, <span class="number">40%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">42%</span>, <span class="number">80%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: green;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">82%</span>, <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后就大功告成了！当然你可以在<a href="https://codepen.io/ThinkerZhang/pen/bZVRpb">这里</a>看到源码。</p>
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/%E7%BA%A2%E7%BB%BF%E7%81%AF/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/css/"><i class="fa fa-tags"></i>css</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/%E5%86%B0%E6%A3%8D/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/%E5%A4%A7%E7%99%BD/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>

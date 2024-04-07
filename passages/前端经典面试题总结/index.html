@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>前端经典面试题总结 | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Hexo, Theme-AD" />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2021-03-29
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    前端经典面试题总结
+  </h1>
+  
+  <article class="passage-article">
+    <p>今天浏览知乎上的一篇文章<a href="https://zhuanlan.zhihu.com/p/57200821">web前端大厂10道经典面试题汇总（含答案详解）</a>，自己照着思路尝试着写一版。</p>
+<h2 id="1、写一个js函数，实现对一个数字每3位加一个逗号，如输入100000，-输出100-000（不考虑负数，小数）—百度前端面试题"><a href="#1、写一个js函数，实现对一个数字每3位加一个逗号，如输入100000，-输出100-000（不考虑负数，小数）—百度前端面试题" class="headerlink" title="1、写一个js函数，实现对一个数字每3位加一个逗号，如输入100000， 输出100,000（不考虑负数，小数）—百度前端面试题"></a>1、写一个js函数，实现对一个数字每3位加一个逗号，如输入100000， 输出100,000（不考虑负数，小数）—百度前端面试题</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>将数字调用toString方法变成字符串，然后用split方法切割成数组；用reverse方法对数组进行倒序，用reduce方法对数组每3位后面添加“,”，最后再用reverse方法将数组倒序回来，并用join方法进行拼接。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">100000</span></span><br><span class="line"><span class="keyword">const</span> arr = num.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> str = arr.<span class="title function_">reverse</span>().<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (index % <span class="number">3</span> === <span class="number">0</span>) &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;acc&#125;</span>,<span class="subst">$&#123;cur&#125;</span>`</span> &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> acc + cur &#125;</span><br><span class="line">&#125;).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str) <span class="comment">// 100,000</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>题目虽然说不考虑负数和小数，但如果考虑进去需要多做什么处理呢？</p>
+<p>1、考虑负数：由于负数只会在最前面出现一次，所以只需要在整除3余数是否为零的条件下再多一个当前值cur是否为“-”即可，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = -<span class="number">100000</span></span><br><span class="line"><span class="keyword">const</span> arr = num.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> str = arr.<span class="title function_">reverse</span>().<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (index % <span class="number">3</span> === <span class="number">0</span> &amp;&amp; cur !== <span class="string">&#x27;-&#x27;</span>) &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;acc&#125;</span>,<span class="subst">$&#123;cur&#125;</span>`</span> &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> acc + cur &#125;</span><br><span class="line">&#125;).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str) <span class="comment">// -100,000</span></span><br></pre></td></tr></table></figure>
+
+<p>2、考虑小数：以小数点为界限，切分整数部分和小数部分，整数部分按照原来的思路方法，最后把小数部分拼接回去即可，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = -<span class="number">100000.12</span></span><br><span class="line"><span class="keyword">const</span> arr = num.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> prevArr = arr[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> str = prevArr.<span class="title function_">reverse</span>().<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (index % <span class="number">3</span> === <span class="number">0</span> &amp;&amp; cur !== <span class="string">&#x27;-&#x27;</span>) &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;acc&#125;</span>,<span class="subst">$&#123;cur&#125;</span>`</span> &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> acc + cur &#125;</span><br><span class="line">&#125;).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) + (arr[<span class="number">1</span>] ? <span class="string">`.<span class="subst">$&#123;arr[<span class="number">1</span>]&#125;</span>`</span> : <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str) <span class="comment">// -100,000.12</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上功能其实就是toLocalString方法的简单实现，实验中我发现，关于小数点后面如果是“.00”，在使用toString和toLocalString方法后都会自动去掉，并不会保留小数部分，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = -<span class="number">100000.00</span></span><br><span class="line"><span class="keyword">const</span> arr = num.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> prevArr = arr[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> str = prevArr.<span class="title function_">reverse</span>().<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (index % <span class="number">3</span> === <span class="number">0</span> &amp;&amp; cur !== <span class="string">&#x27;-&#x27;</span>) &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;acc&#125;</span>,<span class="subst">$&#123;cur&#125;</span>`</span> &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> acc + cur &#125;</span><br><span class="line">&#125;).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) + (arr[<span class="number">1</span>] ? <span class="string">`.<span class="subst">$&#123;arr[<span class="number">1</span>]&#125;</span>`</span> : <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toLocaleString</span>()) <span class="comment">// -100,000</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str) <span class="comment">// -100,000</span></span><br></pre></td></tr></table></figure>
+
+<p>这点不知道是不是我多虑了，不过我也试着想了一个不完美解决办法，一般这种情况可以直接调用toFixed方法保留小数点后几位（比如两位），再做下一步处理，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = -<span class="number">100000.00</span></span><br><span class="line"><span class="keyword">const</span> arr = num.<span class="title function_">toFixed</span>(<span class="number">2</span>).<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> prevArr = arr[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> str = prevArr.<span class="title function_">reverse</span>().<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (index % <span class="number">3</span> === <span class="number">0</span> &amp;&amp; cur !== <span class="string">&#x27;-&#x27;</span>) &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;acc&#125;</span>,<span class="subst">$&#123;cur&#125;</span>`</span> &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> acc + cur &#125;</span><br><span class="line">&#125;).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) + (arr[<span class="number">1</span>] ? <span class="string">`.<span class="subst">$&#123;arr[<span class="number">1</span>]&#125;</span>`</span> : <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str) <span class="comment">// -100,000.00</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2、给定一个字符串，找出其中无重复字符的最长子字符串长度—字节跳动前端面试题"><a href="#2、给定一个字符串，找出其中无重复字符的最长子字符串长度—字节跳动前端面试题" class="headerlink" title="2、给定一个字符串，找出其中无重复字符的最长子字符串长度—字节跳动前端面试题"></a>2、给定一个字符串，找出其中无重复字符的最长子字符串长度—字节跳动前端面试题</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>将字符串调用split方法切割成数组，用reduce方法对数组进行判断无重复拼接，通过判断当前字符是否存在，如果不存在则拼接，并保存字符串长度最大值，存在则删除重复字符串之前的字符，重新拼接新的字符串，最终获得最长的字符串长度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abbbcbd&#x27;</span></span><br><span class="line"><span class="keyword">let</span> len = <span class="number">1</span></span><br><span class="line">str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> idx = acc.<span class="title function_">indexOf</span>(cur)</span><br><span class="line">  <span class="keyword">if</span> (idx === -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> noRepeatStr = acc + cur</span><br><span class="line">    len = <span class="title class_">Math</span>.<span class="title function_">max</span>(len, noRepeatStr.<span class="property">length</span>)</span><br><span class="line">    <span class="keyword">return</span> noRepeatStr</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> acc.<span class="title function_">substring</span>(idx + <span class="number">1</span>) + cur</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(len) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拓展-1"><a href="#拓展-1" class="headerlink" title="拓展"></a>拓展</h3><p>题目只要最长字符串长度，如果需要找出这些最长字符串呢？</p>
+<p>其实只需要在保存记录长度的时候，顺便保存一下字符串数组即可，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abbbcbd&#x27;</span></span><br><span class="line"><span class="keyword">let</span> len = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> arr = []</span><br><span class="line">str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> idx = acc.<span class="title function_">indexOf</span>(cur)</span><br><span class="line">  <span class="keyword">if</span> (idx === -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> noRepeatStr = acc + cur</span><br><span class="line">    <span class="keyword">if</span> (noRepeatStr.<span class="property">length</span> &gt; len) &#123; <span class="comment">// 保存字符串</span></span><br><span class="line">      arr.<span class="title function_">push</span>(noRepeatStr)</span><br><span class="line">    &#125;</span><br><span class="line">    len = <span class="title class_">Math</span>.<span class="title function_">max</span>(len, noRepeatStr.<span class="property">length</span>)</span><br><span class="line">    <span class="keyword">return</span> noRepeatStr</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> acc.<span class="title function_">substring</span>(idx + <span class="number">1</span>) + cur</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(len) <span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">filter</span>(<span class="function"><span class="params">v</span> =&gt;</span> v.<span class="property">length</span> === len)) <span class="comment">// [&#x27;cbd&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>拓展里面返回的字符串是一个数组，这里说明一下，有可能存在长度相同的多个最长无重复字符串，因此需要一个数组来存储会比较合适。</p>
+<h2 id="实现超出整数存储范围的两个大正整数相加—腾讯前端面试题"><a href="#实现超出整数存储范围的两个大正整数相加—腾讯前端面试题" class="headerlink" title="实现超出整数存储范围的两个大正整数相加—腾讯前端面试题"></a>实现超出整数存储范围的两个大正整数相加—腾讯前端面试题</h2><h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><p>将两个大整数进行比较，对不足的位数进行补零，然后将其用split方法拆解成数组，并用reverse方法反转数组顺序，接着按位一一对应相加，注意进位即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123123231231234444435&#x27;</span>, b = <span class="string">&#x27;434235656455454543&#x27;</span></span><br><span class="line"><span class="keyword">const</span> n1 = a.<span class="property">length</span>, n2 = b.<span class="property">length</span></span><br><span class="line"><span class="keyword">const</span> n = <span class="title class_">Math</span>.<span class="title function_">max</span>(n1, n2)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n - <span class="title class_">Math</span>.<span class="title function_">min</span>(n1, n2); i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(n1 &gt; n2) b = <span class="string">&#x27;0&#x27;</span> + b</span><br><span class="line">  <span class="keyword">if</span>(n1 &lt; n2) a = <span class="string">&#x27;0&#x27;</span> + a</span><br><span class="line">&#125;</span><br><span class="line">a = a.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>()</span><br><span class="line">b = b.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>()</span><br><span class="line"><span class="keyword">let</span> res = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123; <span class="attr">length</span>: n &#125;, <span class="function"><span class="params">v</span> =&gt;</span> <span class="number">0</span>)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; n; k++) &#123;</span><br><span class="line">  <span class="keyword">const</span> temp = <span class="built_in">parseInt</span>(a[k]) + <span class="built_in">parseInt</span>(b[k])</span><br><span class="line">  <span class="keyword">if</span> (temp &gt; <span class="number">9</span>) &#123;</span><br><span class="line">    res[k] += temp - <span class="number">10</span></span><br><span class="line">    res[k + <span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    res[k] += temp</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">res = res.<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res) <span class="comment">// 123557466887689898978</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拓展-2"><a href="#拓展-2" class="headerlink" title="拓展"></a>拓展</h3><p>首先了解超出存储范围的大数字概念，每种数据类型可存储数据量都是存在范围的</p>
+<p>数字类型的范围：</p>
+<p>Number.MAX_VALUE &#x3D; 1.7976931348623157e+308</p>
+<p>Number.MIN_VALUE &#x3D; 5e-324</p>
+<p>整数类型的范围：-2^-53 - 2^53</p>
+<h3 id="总结（摘至JavaScript-教程-数值）"><a href="#总结（摘至JavaScript-教程-数值）" class="headerlink" title="总结（摘至JavaScript 教程 数值）"></a>总结（摘至<a href="https://wangdoc.com/javascript/types/number.html">JavaScript 教程 数值</a>）</h3><p>根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位，从最左边开始，是这样组成的。</p>
+<p>第1位：符号位，0表示正数，1表示负数<br>第2位到第12位（共11位）：指数部分<br>第13位到第64位（共52位）：小数部分（即有效数字）<br>符号位决定了一个数的正负，指数部分决定了数值的大小，小数部分决定了数值的精度。</p>
+<p>指数部分一共有11个二进制位，因此大小范围就是0到2047。IEEE 754 规定，如果指数部分的值在0到2047之间（不含两个端点），那么有效数字的第一位默认总是1，不保存在64位浮点数之中。也就是说，有效数字这时总是1.xx…xx的形式，其中xx..xx的部分保存在64位浮点数之中，最长可能为52位。因此，JavaScript 提供的有效数字最长为53个二进制位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(-1)^符号位 * 1.xx...xx * 2^指数部分</span><br></pre></td></tr></table></figure>
+
+<p>这里还有一篇关于IEEE 754的详细介绍，有兴趣的可以看看<a href="http://c.biancheng.net/view/314.html">IEEE 754浮点数标准详解</a></p>
+<h2 id="4、任意二维数组的全排列组合—阿里巴巴前端面试题"><a href="#4、任意二维数组的全排列组合—阿里巴巴前端面试题" class="headerlink" title="4、任意二维数组的全排列组合—阿里巴巴前端面试题"></a>4、任意二维数组的全排列组合—阿里巴巴前端面试题</h2><h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p>把多项数组逐步两两相乘的方式，第一次先取二维数组前两项组合，把组合的结果在与第三项组合以此类推。这种递归做法简单易懂，把复杂的多项问题简化成两项问题的逐渐递增。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">exchange</span> = (<span class="params">arr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> len1 = arr[<span class="number">0</span>].<span class="property">length</span></span><br><span class="line">  <span class="keyword">const</span> len2 = arr[<span class="number">1</span>].<span class="property">length</span></span><br><span class="line">  <span class="keyword">const</span> lenBoth = len1 * len2</span><br><span class="line">  <span class="keyword">let</span> items = <span class="keyword">new</span> <span class="title class_">Array</span>(lenBoth), index = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len1; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</span><br><span class="line">      items[index] = arr[<span class="number">0</span>][i] + <span class="string">&#x27;,&#x27;</span> + arr[<span class="number">1</span>][j]</span><br><span class="line">      index++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  arr.<span class="title function_">shift</span>() <span class="comment">// 删除其中一个</span></span><br><span class="line">  arr[<span class="number">0</span>] = items <span class="comment">// 将第一个变成运算结果</span></span><br><span class="line">  <span class="keyword">if</span> (arr.<span class="property">length</span> &gt; <span class="number">1</span>) &#123; <span class="keyword">return</span> <span class="title function_">exchange</span>(arr) &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> arr[<span class="number">0</span>] &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> array = [[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>], [<span class="string">&#x27;A1&#x27;</span>, <span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;C1&#x27;</span>], [<span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;B2&#x27;</span>]]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">exchange</span>(array)) <span class="comment">// [&quot;A,A1,A2&quot;, &quot;A,A1,B2&quot;, &quot;A,B1,A2&quot;, &quot;A,B1,B2&quot;, &quot;A,C1,A2&quot;, &quot;A,C1,B2&quot;, &quot;B,A1,A2&quot;, &quot;B,A1,B2&quot;, &quot;B,B1,A2&quot;, &quot;B,B1,B2&quot;, &quot;B,C1,A2&quot;, &quot;B,C1,B2&quot;, &quot;C,A1,A2&quot;, &quot;C,A1,B2&quot;, &quot;C,B1,A2&quot;, &quot;C,B1,B2&quot;, &quot;C,C1,A2&quot;, &quot;C,C1,B2&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5、公司最近新研发了一种产品，共生产了n件。有m个客户想购买此产品，已知每个顾客出价。为了确保公平，公司决定要以一个固定的价格出售产品。每一个出价不低于要价的客户将会得到产品（每人只买一个），余下的将会被拒绝购买。请你找出能让公司利润最大化的售价。—京东前端面试题"><a href="#5、公司最近新研发了一种产品，共生产了n件。有m个客户想购买此产品，已知每个顾客出价。为了确保公平，公司决定要以一个固定的价格出售产品。每一个出价不低于要价的客户将会得到产品（每人只买一个），余下的将会被拒绝购买。请你找出能让公司利润最大化的售价。—京东前端面试题" class="headerlink" title="5、公司最近新研发了一种产品，共生产了n件。有m个客户想购买此产品，已知每个顾客出价。为了确保公平，公司决定要以一个固定的价格出售产品。每一个出价不低于要价的客户将会得到产品（每人只买一个），余下的将会被拒绝购买。请你找出能让公司利润最大化的售价。—京东前端面试题"></a>5、公司最近新研发了一种产品，共生产了n件。有m个客户想购买此产品，已知每个顾客出价。为了确保公平，公司决定要以一个固定的价格出售产品。每一个出价不低于要价的客户将会得到产品（每人只买一个），余下的将会被拒绝购买。请你找出能让公司利润最大化的售价。—京东前端面试题</h2><h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p>本题是京东的业务演变题，首先要理清思路。本题中，固定出价，以及出价低于产品的顾客会被拒绝购买是解题核心。</p>
+<p>条件中已知产品总个数，顾客出价。这里有个小陷阱，会出现N &lt; M供不应求的情况，要特殊考虑。依据题目，我们首先需要对顾客出价排序，这里按升序排列。当供不应求出现时，我们截取出价高的顾客。然后把每个顾客的出价当做最终售价循环，得出最大化利润下的售价。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">getOptimal</span> = (<span class="params">n, m, arr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> key = <span class="number">0</span>, max = <span class="number">0</span></span><br><span class="line">  arr = arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">  <span class="keyword">if</span> (n &lt; m) arr = arr.<span class="title function_">slice</span>(m - n)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (max &lt; arr[i] * (arr.<span class="property">length</span> - i)) &#123;</span><br><span class="line">      max = arr[i] * (arr.<span class="property">length</span> - i)</span><br><span class="line">      key = arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> key</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> n = <span class="number">3</span>, m = <span class="number">4</span>, arr = [<span class="number">2</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">7</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getOptimal</span>(n, m, arr)) <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6、计算出字符串中出现次数最多的字符是什么，出现了多少次？—华为前端面试题"><a href="#6、计算出字符串中出现次数最多的字符是什么，出现了多少次？—华为前端面试题" class="headerlink" title="6、计算出字符串中出现次数最多的字符是什么，出现了多少次？—华为前端面试题"></a>6、计算出字符串中出现次数最多的字符是什么，出现了多少次？—华为前端面试题</h2><h3 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h3><p>计算出全部字符出现次数，并留下最大的。首先利用filter（）与indexOf()的方法连用字符串去重，再将得到的作为索引，利用split()分割字符串，得到字符出现次数，比较得出结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abbbcbd&#x27;</span></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>, char = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arr = [...<span class="keyword">new</span> <span class="title class_">Set</span>(str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>))]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> n = (str.<span class="title function_">split</span>(arr[i])).<span class="property">length</span> - <span class="number">1</span></span><br><span class="line">  <span class="keyword">if</span> (count &lt; n) &#123;</span><br><span class="line">    count = n</span><br><span class="line">    char = arr[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(count, char) <span class="comment">// 4 &quot;b&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7、”123456789876543212345678987654321…”的第n位是什么？—小米面试题"><a href="#7、”123456789876543212345678987654321…”的第n位是什么？—小米面试题" class="headerlink" title="7、”123456789876543212345678987654321…”的第n位是什么？—小米面试题"></a>7、”123456789876543212345678987654321…”的第n位是什么？—小米面试题</h2><h3 id="解题思路-6"><a href="#解题思路-6" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用数学中最小循环节的概念解题，找到最小循环节后，利用余数查找第n位数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> k = <span class="string">&#x27;1234567898765432&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getNum</span> = (<span class="params">n</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> k.<span class="title function_">charAt</span>(n % k.<span class="property">length</span> - <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getNum</span>(<span class="number">20</span>)) <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8、请编写一个-JavaScript-函数-parseQueryString，它的用途是把-URL-参数解析为一个对象—淘宝面试题"><a href="#8、请编写一个-JavaScript-函数-parseQueryString，它的用途是把-URL-参数解析为一个对象—淘宝面试题" class="headerlink" title="8、请编写一个 JavaScript 函数 parseQueryString，它的用途是把 URL 参数解析为一个对象—淘宝面试题"></a>8、请编写一个 JavaScript 函数 parseQueryString，它的用途是把 URL 参数解析为一个对象—淘宝面试题</h2><h3 id="解题思路-7"><a href="#解题思路-7" class="headerlink" title="解题思路"></a>解题思路</h3><p>淘宝这道题是很常用的场景题，这里需要处理好分段次序，首先把？分离，然后按&amp;分割最后按&#x3D;分割，主要考察字符串的函数运用以及对象的创建。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">parseQueryString</span> = (<span class="params">url</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> arr = url.<span class="title function_">split</span>(<span class="string">&#x27;?&#x27;</span>)[<span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27;&amp;&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> value = arr[i].<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">    obj[value[<span class="number">0</span>]] = value[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">parseQueryString</span>(<span class="string">&#x27;https://www.baidu.com/s?wd=shiyuanjieyi&amp;rsv_spt=1&amp;rsv_iqid=0xb198d7d800011de6&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=14&amp;rsv_sug1=13&amp;rsv_sug7=101&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=29439&amp;rsv_sug4=29439&#x27;</span>)) <span class="comment">// &#123;wd: &quot;shiyuanjieyi&quot;, rsv_spt: &quot;1&quot;, rsv_iqid: &quot;0xb198d7d800011de6&quot;, issp: &quot;1&quot;, f: &quot;8&quot;, …&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9、如果给定的字符串是回文，返回true，反之，返回false。回文：如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome-回文-。—网易前端面试题"><a href="#9、如果给定的字符串是回文，返回true，反之，返回false。回文：如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome-回文-。—网易前端面试题" class="headerlink" title="9、如果给定的字符串是回文，返回true，反之，返回false。回文：如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome(回文)。—网易前端面试题"></a>9、如果给定的字符串是回文，返回true，反之，返回false。回文：如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome(回文)。—网易前端面试题</h2><h3 id="解题思路-8"><a href="#解题思路-8" class="headerlink" title="解题思路"></a>解题思路</h3><p>去掉字符串多余的标点符号和空格，然后把字符串转化成小写来验证此字符串是否为回文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">palindrome</span> = (<span class="params">str</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> str1 = str.<span class="title function_">replace</span>(<span class="regexp">/[^0-9a-zA-Z]/g</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">toLowerCase</span>()</span><br><span class="line">  <span class="keyword">const</span> str2 = str1.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> str1 === str2</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">palindrome</span>(<span class="string">&#x27;aBc,./1d42--==EFG0 00 h0 :00gfE24d 1cBA&#x27;</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10、确保字符串的每个单词首字母都大写，其余部分小写。——搜狐前端面试题"><a href="#10、确保字符串的每个单词首字母都大写，其余部分小写。——搜狐前端面试题" class="headerlink" title="10、确保字符串的每个单词首字母都大写，其余部分小写。——搜狐前端面试题"></a>10、确保字符串的每个单词首字母都大写，其余部分小写。——搜狐前端面试题</h2><h3 id="解题思路-9"><a href="#解题思路-9" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
+<li>字符串转化成小写；</li>
+<li>分割成字符串数组；</li>
+<li>新组合字符串元素&#x3D;首字母转大写+其余小写。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">upperCase</span> = (<span class="params">str</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> arr = str.<span class="title function_">toLowerCase</span>().<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> arr.<span class="title function_">map</span>(<span class="function"><span class="params">v</span> =&gt;</span> v[<span class="number">0</span>].<span class="title function_">toUpperCase</span>() + v.<span class="title function_">slice</span>(<span class="number">1</span>)).<span class="title function_">join</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">upperCase</span>(<span class="string">&quot;I&#x27;m a title Case.&quot;</span>)) <span class="comment">// I&#x27;m A Title Case.</span></span><br></pre></td></tr></table></figure>
+
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%86%99%E4%B8%80%E4%B8%AAjs%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E6%AF%8F3%E4%BD%8D%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%80%97%E5%8F%B7%EF%BC%8C%E5%A6%82%E8%BE%93%E5%85%A5100000%EF%BC%8C-%E8%BE%93%E5%87%BA100-000%EF%BC%88%E4%B8%8D%E8%80%83%E8%99%91%E8%B4%9F%E6%95%B0%EF%BC%8C%E5%B0%8F%E6%95%B0%EF%BC%89%E2%80%94%E7%99%BE%E5%BA%A6%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">1、写一个js函数，实现对一个数字每3位加一个逗号，如输入100000， 输出100,000（不考虑负数，小数）—百度前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-text">拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E6%89%BE%E5%87%BA%E5%85%B6%E4%B8%AD%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E2%80%94%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">2、给定一个字符串，找出其中无重复字符的最长子字符串长度—字节跳动前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E5%B1%95-1"><span class="toc-text">拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%87%BA%E6%95%B4%E6%95%B0%E5%AD%98%E5%82%A8%E8%8C%83%E5%9B%B4%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%A4%A7%E6%AD%A3%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0%E2%80%94%E8%85%BE%E8%AE%AF%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">实现超出整数存储范围的两个大正整数相加—腾讯前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E5%B1%95-2"><span class="toc-text">拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E6%91%98%E8%87%B3JavaScript-%E6%95%99%E7%A8%8B-%E6%95%B0%E5%80%BC%EF%BC%89"><span class="toc-text">总结（摘至JavaScript 教程 数值）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%BB%BB%E6%84%8F%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E2%80%94%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">4、任意二维数组的全排列组合—阿里巴巴前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-text">解题思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%85%AC%E5%8F%B8%E6%9C%80%E8%BF%91%E6%96%B0%E7%A0%94%E5%8F%91%E4%BA%86%E4%B8%80%E7%A7%8D%E4%BA%A7%E5%93%81%EF%BC%8C%E5%85%B1%E7%94%9F%E4%BA%A7%E4%BA%86n%E4%BB%B6%E3%80%82%E6%9C%89m%E4%B8%AA%E5%AE%A2%E6%88%B7%E6%83%B3%E8%B4%AD%E4%B9%B0%E6%AD%A4%E4%BA%A7%E5%93%81%EF%BC%8C%E5%B7%B2%E7%9F%A5%E6%AF%8F%E4%B8%AA%E9%A1%BE%E5%AE%A2%E5%87%BA%E4%BB%B7%E3%80%82%E4%B8%BA%E4%BA%86%E7%A1%AE%E4%BF%9D%E5%85%AC%E5%B9%B3%EF%BC%8C%E5%85%AC%E5%8F%B8%E5%86%B3%E5%AE%9A%E8%A6%81%E4%BB%A5%E4%B8%80%E4%B8%AA%E5%9B%BA%E5%AE%9A%E7%9A%84%E4%BB%B7%E6%A0%BC%E5%87%BA%E5%94%AE%E4%BA%A7%E5%93%81%E3%80%82%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%87%BA%E4%BB%B7%E4%B8%8D%E4%BD%8E%E4%BA%8E%E8%A6%81%E4%BB%B7%E7%9A%84%E5%AE%A2%E6%88%B7%E5%B0%86%E4%BC%9A%E5%BE%97%E5%88%B0%E4%BA%A7%E5%93%81%EF%BC%88%E6%AF%8F%E4%BA%BA%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%EF%BC%89%EF%BC%8C%E4%BD%99%E4%B8%8B%E7%9A%84%E5%B0%86%E4%BC%9A%E8%A2%AB%E6%8B%92%E7%BB%9D%E8%B4%AD%E4%B9%B0%E3%80%82%E8%AF%B7%E4%BD%A0%E6%89%BE%E5%87%BA%E8%83%BD%E8%AE%A9%E5%85%AC%E5%8F%B8%E5%88%A9%E6%B6%A6%E6%9C%80%E5%A4%A7%E5%8C%96%E7%9A%84%E5%94%AE%E4%BB%B7%E3%80%82%E2%80%94%E4%BA%AC%E4%B8%9C%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">5、公司最近新研发了一种产品，共生产了n件。有m个客户想购买此产品，已知每个顾客出价。为了确保公平，公司决定要以一个固定的价格出售产品。每一个出价不低于要价的客户将会得到产品（每人只买一个），余下的将会被拒绝购买。请你找出能让公司利润最大化的售价。—京东前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="toc-text">解题思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E8%AE%A1%E7%AE%97%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%87%BA%E7%8E%B0%E4%BA%86%E5%A4%9A%E5%B0%91%E6%AC%A1%EF%BC%9F%E2%80%94%E5%8D%8E%E4%B8%BA%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">6、计算出字符串中出现次数最多的字符是什么，出现了多少次？—华为前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-5"><span class="toc-text">解题思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E2%80%9D123456789876543212345678987654321%E2%80%A6%E2%80%9D%E7%9A%84%E7%AC%ACn%E4%BD%8D%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E2%80%94%E5%B0%8F%E7%B1%B3%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">7、”123456789876543212345678987654321…”的第n位是什么？—小米面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-6"><span class="toc-text">解题思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E8%AF%B7%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA-JavaScript-%E5%87%BD%E6%95%B0-parseQueryString%EF%BC%8C%E5%AE%83%E7%9A%84%E7%94%A8%E9%80%94%E6%98%AF%E6%8A%8A-URL-%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E2%80%94%E6%B7%98%E5%AE%9D%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">8、请编写一个 JavaScript 函数 parseQueryString，它的用途是把 URL 参数解析为一个对象—淘宝面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-7"><span class="toc-text">解题思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E5%A6%82%E6%9E%9C%E7%BB%99%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%9B%9E%E6%96%87%EF%BC%8C%E8%BF%94%E5%9B%9Etrue%EF%BC%8C%E5%8F%8D%E4%B9%8B%EF%BC%8C%E8%BF%94%E5%9B%9Efalse%E3%80%82%E5%9B%9E%E6%96%87%EF%BC%9A%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BF%BD%E7%95%A5%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7%E3%80%81%E5%A4%A7%E5%B0%8F%E5%86%99%E5%92%8C%E7%A9%BA%E6%A0%BC%EF%BC%8C%E6%AD%A3%E7%9D%80%E8%AF%BB%E5%92%8C%E5%8F%8D%E7%9D%80%E8%AF%BB%E4%B8%80%E6%A8%A1%E4%B8%80%E6%A0%B7%EF%BC%8C%E9%82%A3%E4%B9%88%E8%BF%99%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B0%B1%E6%98%AFpalindrome-%E5%9B%9E%E6%96%87-%E3%80%82%E2%80%94%E7%BD%91%E6%98%93%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">9、如果给定的字符串是回文，返回true，反之，返回false。回文：如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome(回文)。—网易前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-8"><span class="toc-text">解题思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81%E7%A1%AE%E4%BF%9D%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E9%A6%96%E5%AD%97%E6%AF%8D%E9%83%BD%E5%A4%A7%E5%86%99%EF%BC%8C%E5%85%B6%E4%BD%99%E9%83%A8%E5%88%86%E5%B0%8F%E5%86%99%E3%80%82%E2%80%94%E2%80%94%E6%90%9C%E7%8B%90%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">10、确保字符串的每个单词首字母都大写，其余部分小写。——搜狐前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-9"><span class="toc-text">解题思路</span></a></li></ol></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/%E5%89%8D%E7%AB%AF%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/%E9%9B%AA%E8%8A%B1/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>冰棍 | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="css," />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-03-31
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    冰棍
+  </h1>
+  
+  <article class="passage-article">
+    <p>今天给大家分享一下如何用纯 CSS 创作一支诱人的冰棍，效果图如下：</p>
+<p><img src="https://blog-1252840996.cos.ap-guangzhou.myqcloud.com/images/posts/ice.gif" alt="ice"></p>
+<p>首先定义 dom，容器中包含 2 个元素：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ice-lolly&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flavors&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;stick&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>样式居中显示：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">background-color</span>: darkslategray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着绘制出冰棍的外形，并给冰棍上色：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flavors</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">19em</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">26em</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">8em</span> <span class="number">8em</span> <span class="number">1em</span> <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">140%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">120%</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(</span><br><span class="line">        hotpink <span class="number">0%</span>,</span><br><span class="line">        hotpink <span class="number">25%</span>,</span><br><span class="line">        deepskyblue <span class="number">25%</span>,</span><br><span class="line">        deepskyblue <span class="number">50%</span>,</span><br><span class="line">        gold <span class="number">50%</span>,</span><br><span class="line">        gold <span class="number">75%</span>,</span><br><span class="line">        lightgreen <span class="number">75%</span>,</span><br><span class="line">        lightgreen <span class="number">100%</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">20%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">25deg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来一点光照效果：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flavors</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">17em</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>画出冰棍筷子，并给冰棍筷子加一点阴影，增加立体感：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.stick</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">6em</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">8em</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: sandybrown;</span><br><span class="line">    <span class="attribute">left</span>: <span class="built_in">calc</span>(<span class="number">50%</span> - <span class="number">6em</span> / <span class="number">2</span>);</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">3em</span> <span class="number">3em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.stick</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: inherit;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">2.5em</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: sienna;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>让冰棍的色彩滚动起来：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">animation</span>: moving <span class="number">100s</span> linear infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> moving &#123;</span><br><span class="line">    <span class="selector-tag">to</span> &#123;</span><br><span class="line">        <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">1000vh</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，增加交互效果，当鼠标悬停时才播放动画：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: paused;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ice-lolly</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.flavors</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: running;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大功告成了！当然你可以在<a href="https://codepen.io/ThinkerZhang/pen/zYNoXEy">这里</a>看到源码。</p>
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/%E5%86%B0%E6%A3%8D/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/css/"><i class="fa fa-tags"></i>css</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/%E5%89%AA%E5%88%80/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/%E7%BA%A2%E7%BB%BF%E7%81%AF/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>

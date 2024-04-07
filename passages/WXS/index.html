@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>WXS | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="微信小程序," />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-03-22
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    WXS
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天有个同学问我 <strong>微信小程序支持管道过滤器</strong> 吗？<br>用过 angular 或者 vue 的同学都应该会在项目里用到 filter，然而在小程序中是不支持的。但是也有一些解决办法，有一篇文章讲得还算不错，我在这里贴一下 <a href="https://www.jianshu.com/p/7a9029e99ed7">微信小程序 使用filter过滤器几种方式</a> 。<br>但我只是关心 WXS 能不能实现 filter 以及还能做什么？带着这样的疑问，我重新看了一遍微信小程序官方的 WXS。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/1/22/168744fc9da2fc3e~tplv-t2oaga2asx-image.image" alt="1"></p>
+<p>下面举个简单的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;wxs module=&quot;m1&quot;&gt;var msg = &quot;hello world&quot;; module.exports.message = msg;&lt;/wxs&gt;</span><br><span class="line">&lt;view&gt;&#123;&#123;m1.message&#125;&#125;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子可以输出 hello world 页面，当你阅读完 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/">官方文档</a>，会发现小程序的脚本语言的功能很捉鳖，比如只支持 es5 语法，不支持外部引入 js 等等。但是我仍然期待它未来支持更多的能力。</p>
+<blockquote>
+<p>下面接入正题，探索文章题目的疑问</p>
+</blockquote>
+<h2 id="一、用-WXS-实现-filter"><a href="#一、用-WXS-实现-filter" class="headerlink" title="一、用 WXS 实现 filter"></a>一、用 WXS 实现 filter</h2><p>前端通常有一个需求，那就是把后台传过来的时间戳转为不同规格的日期后显示出来。以往的做法一般是用一个函数对数据进行包装，然后输出到页面。就像前面提到的那篇文章里面所说的第一种方法一样，但是有人考虑到性能问题，认为在js里面循环处理比较耗性能（这点我不做评价，毕竟自己没有真正测试过）<br>关于日期格式化的例子在前面提到的文章已经有了，在这里我再举一个比较简单的例子。在我开发过的项目里面，后台返回的网路图片地址通常是相对地址，也就是说要把图片显示出来，还得加上配置好的域名前缀。而我通常是拿到数据后进行遍历操作，把需要前端展示的图片加上前缀。但是有了 WXS，我们可以这样做：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;wxs module=&quot;filter&quot;&gt;</span><br><span class="line">    function getFullPath(url) &#123;</span><br><span class="line">        return &quot;https://shiyuanjieyi.cn&quot; + url</span><br><span class="line">    &#125;</span><br><span class="line">    module.exports.getFullPath = getFullPath</span><br><span class="line">&lt;/wxs&gt;</span><br><span class="line">&lt;image src=&quot;&#123;&#123;filter.getFullPath(url)&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面这个例子中，可以看到整个过程基本类似于 vue 等框架自定义 filter 的做法。</p>
+<h2 id="二、-WXS-还能做什么"><a href="#二、-WXS-还能做什么" class="headerlink" title="二、 WXS 还能做什么"></a>二、 WXS 还能做什么</h2><p>其实很多时候，我们并不了解 WXS 还能做更多条件渲染的一些东西。请看下面一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;wxs module=&quot;filter&quot;&gt;</span><br><span class="line">  function getData(entry, type) &#123;</span><br><span class="line">    var imgUrl = &#x27;&#x27;;</span><br><span class="line">    var content = &#x27;&#x27;;</span><br><span class="line">    switch (entry) &#123;</span><br><span class="line">      case &#x27;needs&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/goods_empty.png&#x27;;</span><br><span class="line">        content = &#x27;暂时没有需求&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;goods&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/goods_empty.png&#x27;;</span><br><span class="line">        content = &#x27;暂时没有商品&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;activity&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/activity_empty.png&#x27;;</span><br><span class="line">        content = &#x27;该专栏暂时没有活动&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;channel&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/article_empty.png&#x27;;</span><br><span class="line">        content = &#x27;该专栏暂时没有资讯&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;micro-circle&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/article_empty.png&#x27;;</span><br><span class="line">        content = &#x27;没有相关的话题哦&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;needs-release&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/goods_release_empty.png&#x27;;</span><br><span class="line">        content = &#x27;你还没有发布任何需求哦&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;goods-release&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/goods_release_empty.png&#x27;;</span><br><span class="line">        content = &#x27;你还没有发布任何商品哦&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;goods-collection&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/goods_collect_empty.png&#x27;;</span><br><span class="line">        content = &#x27;你还没有收藏任何商品哦&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;apply&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/activity_apply_empty.png&#x27;;</span><br><span class="line">        content = &#x27;你还没有报名任何活动哦&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      case &#x27;activity-collection&#x27;:</span><br><span class="line">        imgUrl = &#x27;/images/activity_collect_empty.png&#x27;;</span><br><span class="line">        content = &#x27;你还没有收藏任何活动哦&#x27;;</span><br><span class="line">        break;</span><br><span class="line">      default:</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    if (type === &#x27;image&#x27;) &#123;</span><br><span class="line">      return imgUrl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return content;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  module.exports.getData = getData;</span><br><span class="line">&lt;/wxs&gt;</span><br><span class="line">&lt;template name=&quot;nodata&quot;&gt;</span><br><span class="line">  &lt;view class=&quot;no-data&quot;&gt;</span><br><span class="line">    &lt;image src=&quot;&#123;&#123;filter.getData(entry, &#x27;image&#x27;)&#125;&#125;&quot; class=&quot;no-data-icon&quot;&gt;&lt;/image&gt;</span><br><span class="line">    &lt;view class=&quot;no-data-text&quot;&gt;&#123;&#123;filter.getData(entry, &#x27;content&#x27;)&#125;&#125;&lt;/view&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上例中，我使用了 WXS 的函数功能帮我做条件判断，拿到对应的模板输出，其功能就是一个空数据展示页面。或许你会问这样写的好处是什么？<br>那我可以告诉你，它很容易扩展，比如新增一个页面需要对应的空数据模板，那么直接在 switch 语句中加多一个 case 即可。况且如果把逻辑写在 WXML 上代码会很复杂，不容易看懂。<br>明白了这一点，你会发现，只要是在 WXML 上需要做一些逻辑判断的操作都可以 WXS 代替。<br>也就是说，在开发中，我们都可以用 WXS 的函数功能帮助我们清晰有效地处理 WXML 上渲染的一些视图。</p>
+<h2 id="三、思考（引伸）"><a href="#三、思考（引伸）" class="headerlink" title="三、思考（引伸）"></a>三、思考（引伸）</h2><p>1、 对于需要做成 filter 形式的 WXS，最好把它写在一个.wxs文件里，需要使用时，直接在对应 WXML 上引用即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var foo = &quot;&#x27;hello world&#x27; from tools.wxs&quot;;</span><br><span class="line">var bar = function (d) &#123;</span><br><span class="line">  return d;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  FOO: foo,</span><br><span class="line">  bar: bar,</span><br><span class="line">&#125;;</span><br><span class="line">module.exports.msg = &quot;some msg&quot;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;wxs src=&quot;./../tools.wxs&quot; module=&quot;tools&quot; /&gt;</span><br><span class="line">&lt;view&gt;&#123;&#123;tools.msg&#125;&#125;&lt;/view&gt;</span><br><span class="line">&lt;view&gt;&#123;&#123;tools.bar(tools.FOO)&#125;&#125;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、 在 .wxs 模块中引用其他 wxs 文件模块，可以使用 require 函数，但是不能引用其他 js 文件模块。</p>
+<h2 id="四、参考链接"><a href="#四、参考链接" class="headerlink" title="四、参考链接"></a>四、参考链接</h2><ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/">WXS·小程序</a></li>
+</ul>
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%A8-WXS-%E5%AE%9E%E7%8E%B0-filter"><span class="toc-text">一、用 WXS 实现 filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-WXS-%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">二、 WXS 还能做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%9D%E8%80%83%EF%BC%88%E5%BC%95%E4%BC%B8%EF%BC%89"><span class="toc-text">三、思考（引伸）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">四、参考链接</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/WXS/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><i class="fa fa-tags"></i>微信小程序</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%E3%80%81%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>

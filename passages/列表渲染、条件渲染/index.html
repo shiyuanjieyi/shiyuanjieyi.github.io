@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>列表渲染、条件渲染 | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="微信小程序," />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-03-23
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    列表渲染、条件渲染
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开发微信小程序离不开“页面渲染”，对于初学者来说很难理解小程序里的“页面渲染”是什么、怎么用？<br>而学过 vue 的同学来说，这个就比较熟悉了，实际上就是数据绑定页面渲染。<br>那么关于页面渲染最重要的是列表渲染和条件渲染这两块，先来看看几个简单的例子。</p>
+<p>下面是个“<strong>列表渲染</strong>”的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;array&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;index&#125;&#125;: &#123;&#123;item.message&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">array</span>: [&#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;foo&#x27;</span>,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子可以看出，默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item。当然，使用 wx:for-item 可以指定数组当前元素的变量名，使用 wx:for-index 可以指定数组当前下标的变量名，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;array&#125;&#125;&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;itemName&quot;&gt;</span><br><span class="line">  &#123;&#123;idx&#125;&#125;: &#123;&#123;itemName.message&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>下面是个“<strong>条件渲染</strong>”的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:if=&quot;&#123;&#123;condition&#125;&#125;&quot;&gt;True&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">condition</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子说明，当 condition 为真时，页面渲染上面的 view 标签。当然也可以用 wx:elif 和 wx:else 来添加一个 else 块，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt;1&lt;/view&gt;</span><br><span class="line">&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt;2&lt;/view&gt;</span><br><span class="line">&lt;view wx:else&gt;3&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>下面接入正题，探索文章题目的疑问</p>
+</blockquote>
+<h2 id="一、-列表渲染中的-wx-key-有什么作用"><a href="#一、-列表渲染中的-wx-key-有什么作用" class="headerlink" title="一、 列表渲染中的 wx:key 有什么作用"></a>一、 列表渲染中的 wx:key 有什么作用</h2><p>其实初次看 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/list.html">官方文档</a> 可能会对 wx:key 有点懵，官方解释是这样的：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/1/23/1687a1eeea12efcc~tplv-t2oaga2asx-image.image" alt="1"></p>
+<p>根据我多年看文档经验，一般我看不懂的可以忽略不重要的文字，只需关注重点，例如上图的文字加粗部分，因此，一开始我选择不写 wx:key 这个属性。然而在开发过程中写多了列表渲染（而没有加 wx:key）之后，控制台会报很多的 wx:key 的警告，对于有点代码洁癖的我看起来很不爽，但又苦于不清楚 wx:key 的真正作用，于是自创了一个解决办法，那就是在每个列表渲染后面加上 wx:key&#x3D;”“，类似下面这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;array&#125;&#125;&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>于是我惊奇地发现警告统统不见了，也没有其他负面影响，于是我就这样用了大半年。<br>然而，半年前我做的一个项目里面有个列表渲染需要试试获取用户头像和昵称，于是我之前的做法不管用了，每次获取到的用户信息跟当前内容不对应，并且会发生错乱。于是我重新理解了一遍 wx:key，结合下面的例子，我似乎明白了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;switch wx:for=&quot;&#123;&#123;objectArray&#125;&#125;&quot; wx:key=&quot;unique&quot; style=&quot;display: block;&quot;&gt;</span><br><span class="line">  &#123;&#123;item.id&#125;&#125;</span><br><span class="line">&lt;/switch&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">objectArray</span>: [</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="number">5</span>, <span class="attr">unique</span>: <span class="string">&#x27;unique_5&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="number">4</span>, <span class="attr">unique</span>: <span class="string">&#x27;unique_4&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">unique</span>: <span class="string">&#x27;unique_3&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">unique</span>: <span class="string">&#x27;unique_2&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">unique</span>: <span class="string">&#x27;unique_1&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="number">0</span>, <span class="attr">unique</span>: <span class="string">&#x27;unique_0&#x27;</span>&#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>其实，wx:key 是用来绑定当前列表中的项目特征的，也就是说，如果列表是动态更新的，那么 wx:key 的作用是保持原有项目的整个状态不变。<br>结合上面的例子，我们可以知道，对于列表数组是个对象数组，那么 wx:key 属性直接写对应的唯一的属性名就可以了，比如上面的 wx:key&#x3D;”unique”， 或者 wx:key&#x3D;”id” 也是可以的，只要保持属性是唯一值就行了，有点类似页面标签里面的 id 属性在页面是唯一的。<br>对于列表数组是个基本类型数组，那么直接写 wx:key&#x3D;”*this” 就可以了，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;block wx:for=&quot;&#123;&#123;[1, 2, 3]&#125;&#125;&quot; wx:key=&quot;*this&quot;&gt;</span><br><span class="line">  &lt;view&gt;&#123;&#123;index&#125;&#125;:&lt;/view&gt;</span><br><span class="line">  &lt;view&gt;&#123;&#123;item&#125;&#125;&lt;/view&gt;</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="巧用-wx-key-属性"><a href="#巧用-wx-key-属性" class="headerlink" title="巧用 wx:key 属性"></a>巧用 wx:key 属性</h3><ul>
+<li>如果很明确自己的列表渲染是个静态列表，那么你可以像我一开始那样做，加个 wx:key&#x3D;”“ 就可以了</li>
+<li>反之，如果是个动态列表，那么就得在数组里找到唯一的键值，放在 wx:key 里面</li>
+<li>当然如果你无视警告，也不影响功能，不加也行</li>
+</ul>
+<h2 id="二、-wx-if-和-hidden-有什么区别"><a href="#二、-wx-if-和-hidden-有什么区别" class="headerlink" title="二、 wx:if 和 hidden 有什么区别"></a>二、 wx:if 和 hidden 有什么区别</h2><p>其实我们用条件渲染更多地在用 wx:if 而不是 hidden，因为前者可以拓展，后者缺乏一定的逻辑。然而他们到底有什么区别呢？<br><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/conditional.html">官方文档</a> 是这样描述的：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/1/23/1687a1f214ea300f~tplv-t2oaga2asx-image.image" alt="2"></p>
+<p>上图中，我们大概可以了解到，如果需要频繁切换状态，用 hidden，否则用 wx:if。<br>也就是说，wx:if 能够实时创建渲染组件或销毁组件，而且当他为真时才会创建，初始为假时什么也不做，由真变为假时则进行销毁。所以频繁切换他是一个比较耗性能举动。而 hidden 则代表页面初始渲染时就会把该组件渲染在页面上，值的真假只是控制其显示隐藏罢了。页面不销毁，则该组件也不会被销毁。<br>明白了这一点，你会发现，从我们开发者的角度来说，灵活使用这两个条件判断会事半功倍。<br>下面列举几种使用场景给开发者参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;load-event&quot; hidden=&quot;&#123;&#123;!isAdd&#125;&#125;&quot;&gt;加载中……&lt;/view&gt;</span><br><span class="line">&lt;view class=&quot;load-event&quot; hidden=&quot;&#123;&#123;!isAdded &amp;&amp; isMore&#125;&#125;&quot;&gt;没有更多了&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码是一个上拉加载动画显示与隐藏组件，可以看到用的是 hidden，因为他是一个需要频繁切换的组件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;block wx:if=&quot;&#123;&#123;node.name === &#x27;p&#x27;&#125;&#125;&quot;&gt;</span><br><span class="line">  &lt;view class=&quot;&#123;&#123;node.attrs.class&#125;&#125;&quot; data-index=&quot;&#123;&#123;index&#125;&#125;&quot; bindtap=&quot;toText&quot;&gt;</span><br><span class="line">    &lt;text selectable=&quot;true&quot;&gt;&#123;&#123;node.children[0].text&#125;&#125;&lt;/text&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/block&gt;</span><br><span class="line">&lt;block wx:if=&quot;&#123;&#123;node.name === &#x27;img&#x27;&#125;&#125;&quot;&gt;</span><br><span class="line">  &lt;image class=&quot;&#123;&#123;node.attrs.class&#125;&#125;&quot; src=&quot;&#123;&#123;node.attrs.src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">&lt;/block&gt;</span><br><span class="line">&lt;block wx:if=&quot;&#123;&#123;node.name === &#x27;video&#x27;&#125;&#125;&quot;&gt;</span><br><span class="line">  &lt;video class=&quot;&#123;&#123;node.attrs.class&#125;&#125;&quot; src=&quot;&#123;&#123;node.attrs.src&#125;&#125;&quot;&gt;&lt;/video&gt;</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码展示的是渲染文字还是图片或者是视频，只展示其中的一个那么用 wx:if 最佳。</p>
+<p>下面是一个自定义 input 组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:if=&quot;&#123;&#123;isInput&#125;&#125;&quot; class=&quot;show-input&quot;&gt;</span><br><span class="line">  &lt;view class=&quot;input-item&quot;&gt;</span><br><span class="line">    &lt;input class=&quot;item-input&quot; bindconfirm=&quot;onSend&quot; bindinput=&quot;inputHandle&quot; bindblur=&quot;hideInput&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;view class=&quot;send-btn&quot; catchtap=&quot;onSend&quot;&gt;发送&lt;/view&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其功能是点击评论按钮能实时显示输入框，否则隐藏。这里为什么用 wx:if 呢？因为我希望它显示时是新的 input 组件，不是之前渲染好的，这样如果我刚输入完文字，再次评论不会出现上一次的文字残留。</p>
+<h3 id="巧用-wx-if-和-hidden"><a href="#巧用-wx-if-和-hidden" class="headerlink" title="巧用 wx:if 和 hidden"></a>巧用 wx:if 和 hidden</h3><ul>
+<li>有时我们需要提前渲染好里面的子组件，那么要用 hidden，否则待显示时需要加上渲染的时间</li>
+<li>通常情况下，我在隐藏的时候都不需要该组件的话，那就用 wx:if</li>
+<li>如果需要在页面中点击切换的渲染，那么考虑小程序性能问题，还是用 hidden 为好</li>
+</ul>
+<h2 id="三、思考（引伸）"><a href="#三、思考（引伸）" class="headerlink" title="三、思考（引伸）"></a>三、思考（引伸）</h2><p>1、 <code>&lt;block&gt;</code> 这个元素在列表和条件渲染上是很好用的，不过要注意不要在这个标签上绑定其他属性，比如 data- 或者绑定事件 <code>bindtap</code>。下面是一个反例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot; data-id=&quot;1&quot; bindtap=&quot;tapName&quot;&gt;</span><br><span class="line">  &lt;view&gt;view1&lt;/view&gt;</span><br><span class="line">  &lt;view&gt;view2&lt;/view&gt;</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码里，在 js 中定义绑定事件后，你会发现不会执行。原因就在 <code>&lt;block&gt;</code> 元素在渲染页面后并不会存在，他不是个组件，不会渲染在页面树节点里面，所以在他上面绑定的事件或者属性也不会有效。</p>
+<p>2、 当 wx:for 的值为字符串时，会将字符串解析成字符串数组；另外，花括号和引号之间如果有空格，将最终被解析成为字符串，请看下面的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;array&quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;[&#x27;a&#x27;,&#x27;r&#x27;,&#x27;r&#x27;,&#x27;a&#x27;,&#x27;y&#x27;]&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;[1,2,3]&#125;&#125; &quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;[1,2,3] + &#x27; &#x27;&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、参考链接"><a href="#四、参考链接" class="headerlink" title="四、参考链接"></a>四、参考链接</h2><ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/list.html">列表渲染·小程序</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/conditional.html">条件渲染·小程序</a></li>
+</ul>
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%E4%B8%AD%E7%9A%84-wx-key-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="toc-text">一、 列表渲染中的 wx:key 有什么作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A7%E7%94%A8-wx-key-%E5%B1%9E%E6%80%A7"><span class="toc-text">巧用 wx:key 属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-wx-if-%E5%92%8C-hidden-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">二、 wx:if 和 hidden 有什么区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A7%E7%94%A8-wx-if-%E5%92%8C-hidden"><span class="toc-text">巧用 wx:if 和 hidden</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%9D%E8%80%83%EF%BC%88%E5%BC%95%E4%BC%B8%EF%BC%89"><span class="toc-text">三、思考（引伸）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">四、参考链接</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%E3%80%81%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><i class="fa fa-tags"></i>微信小程序</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/%E4%BA%8B%E4%BB%B6/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/WXS/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>事件 | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="微信小程序," />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-03-24
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    事件
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开发微信小程序离不开“事件”，对于初学者来说很难理解小程序里的“事件”是什么、怎么用？<br>先看看看官方文档的解释：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/1/19/16863dca4f399409~tplv-t2oaga2asx-image.image" alt="1"></p>
+<p>看着好像摸不着头脑，其实说白了就是视图（view）与逻辑（js）交互的通信方式，类似于传统网页中的 onclick 事件，了解 vue 的同学也可以认为是监听指令。<br>一个简单的绑定事件例子如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id=&quot;tapTest&quot; data-hi=&quot;WeChat&quot; bindtap=&quot;tapName&quot;&gt;Click me!&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="title function_">tapName</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>乍一看，确实跟 vue 语法有点像，但是有区别，那就是传参方式不一样。所以这里需要注意的是小程序事件传参是通过当前组件上由data-开头的自定义属性组成的集合。比如上面代码定义了一个 hi 属性，tapName 方法拿到的参数 e 展开大致如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tap&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;timeStamp&quot;</span><span class="punctuation">:</span> <span class="number">895</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;target&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tapTest&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;dataset&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;hi&quot;</span><span class="punctuation">:</span> <span class="string">&quot;WeChat&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;currentTarget&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tapTest&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;dataset&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;hi&quot;</span><span class="punctuation">:</span> <span class="string">&quot;WeChat&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">53</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">14</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;touches&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;pageX&quot;</span><span class="punctuation">:</span> <span class="number">53</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;pageY&quot;</span><span class="punctuation">:</span> <span class="number">14</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;clientX&quot;</span><span class="punctuation">:</span> <span class="number">53</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;clientY&quot;</span><span class="punctuation">:</span> <span class="number">14</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;changedTouches&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;identifier&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;pageX&quot;</span><span class="punctuation">:</span> <span class="number">53</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;pageY&quot;</span><span class="punctuation">:</span> <span class="number">14</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;clientX&quot;</span><span class="punctuation">:</span> <span class="number">53</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;clientY&quot;</span><span class="punctuation">:</span> <span class="number">14</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们看到这个 hi 属性在 dataset.target 和 dataset.currentTarget 下，它（参数 e）是一个对象，也就是说绑定的 hi 属性可以通过 e.dataset.target.hi 或者 e.dataset.currentTarget.hi 拿到。<br>于是，我们对小程序的事件有了初步的了解，但是当我们用的时候就发现还有很多没有注意到的地方。</p>
+<blockquote>
+<p>下面接入正题，探索文章题目的疑问（当然后面还有一些彩蛋）</p>
+</blockquote>
+<h2 id="一、-bind-和-catch-有什么区别"><a href="#一、-bind-和-catch-有什么区别" class="headerlink" title="一、 bind 和 catch 有什么区别"></a>一、 bind 和 catch 有什么区别</h2><p>如果学过前端基础的应该都知道 <strong>浏览器事件模型</strong>，它分为捕获、目标和冒泡三个阶段（如果需要了解具体详情，可自行百度）。<br>而小程序事件模型没那么复杂，原本只有冒泡阶段，分为冒泡事件（bind）和非冒泡事件（catch）。当然目前也支持捕获阶段，本文暂不做深入讲解，有兴趣可自行查看 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html">官方文档</a> 。<br>看到这里，你知道了 bind 属于冒泡事件，catch 属于非冒泡事件，如你还不知道冒泡是什么意思的话，那我可以稍微解释一下：<br>鱼🐠在水里突出的水泡总是从下向上浮动，最后浮出水面。而冒泡就是基于这一原理，在节点树中有父子关系，父标签总是嵌套着子标签。当点击绑定事件的子标签之后，如果父标签也绑定了一个事件，那么冒泡的话也会触发父标签的事件，而非冒泡则不会触发。也就是冒泡与否决定事件是否想外传递，方向是向“外”的（由此也提一下，捕获与冒泡相反，事件传递方向是向“内”的）。<br>这里看一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id=&quot;outer&quot; bindtap=&quot;handleTap1&quot;&gt;</span><br><span class="line">  outer view</span><br><span class="line">  &lt;view id=&quot;middle&quot; catchtap=&quot;handleTap2&quot;&gt;</span><br><span class="line">    middle view</span><br><span class="line">    &lt;view id=&quot;inner&quot; bindtap=&quot;handleTap3&quot;&gt;inner view&lt;/view&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面这个例子中，点击 inner view 会先后调用 handleTap3 和 handleTap2 (因为tap事件会冒泡到 middle view，而 middle view 阻止了 tap 事件冒泡，不再向父节点传递)，点击 middle view 会触发 handleTap2，点击 outer view 会触发 handleTap1。<br>好了，到这里我们就知道了 <strong>bind 不会阻止冒泡，事件会一直向上冒泡，而 catch 则会阻止冒泡，只会触发点击的节点事件。</strong></p>
+<h3 id="巧用-bind-和-catch-绑定事件"><a href="#巧用-bind-和-catch-绑定事件" class="headerlink" title="巧用 bind 和 catch 绑定事件"></a>巧用 bind 和 catch 绑定事件</h3><ul>
+<li>WXML 代码如果没有很复杂的层层嵌套关系，或者不涉及父子标签都绑定事件的话，我们用 bind 开头的事件即可</li>
+<li>如果遇到卡片式列表，里面还有点赞或者评论等按钮的，那么这些子节点的事件要用 catch 开头，否则会同时触发父节点的事件</li>
+<li>在一些自定义弹窗中，可以给父容器定义一个隐藏弹窗的事件，而子容器的事件用 bind 开头，可以达到点击子容器对应事件的同时自动触发隐藏弹窗事件</li>
+</ul>
+<h2 id="二、-target-和-currentTarget-有什么差异"><a href="#二、-target-和-currentTarget-有什么差异" class="headerlink" title="二、 target 和 currentTarget 有什么差异"></a>二、 target 和 currentTarget 有什么差异</h2><p>在前面绑定事件我们提到 hi 属性可以通过 target 和 currentTarget 获得，那是不是随便用它们其中一个就可以了呢？答案显然不是的。<br>把上面的例子做一个修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id=&quot;outer&quot; bindtap=&quot;handleTap1&quot;&gt;</span><br><span class="line">  outer view</span><br><span class="line">  &lt;view id=&quot;middle&quot; data-hi=&quot;middle&quot; catchtap=&quot;handleTap2&quot;&gt;</span><br><span class="line">    middle view</span><br><span class="line">    &lt;view id=&quot;inner&quot; data-hi=&quot;inner&quot; bindtap=&quot;handleTap3&quot;&gt;inner view&lt;/view&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上例中，点击 inner view 时，handleTap3 收到的事件对象 target 和 currentTarget 都是 inner，而 handleTap2 收到的事件对象 target 就是 inner，currentTarget 就是 middle。<br>也就是说，target 里的属性来源于真正点击的那个组件，而 currentTarget 里的属性总是指向触发事件绑定的组件上。<br>进一步说就是，currentTarget 能拿到触发事件所在组件上绑定的任何data- 开头的属性，而 target 则不一定是，它拿到的只是用户所真正点击的那个组件上的data- 属性。<br>明白了这一点，你会发现，从我们开发者的角度来说，更多地是拿到 currentTarget 对象，而不是 target 对象。<br>也就是说，在开发中，我们只要用 currentTarget 这个对象就能够符合我们的开发要求了，没必要用 target 对象，因为一不小心就会拿不到真正想要的参数。<br>下面这种场景是我们以前经常犯的错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id=&quot;outer&quot; data-hi=&quot;outer&quot; bindtap=&quot;handleTap&quot;&gt;</span><br><span class="line">  outer view</span><br><span class="line">  ...</span><br><span class="line">  &lt;view id=&quot;inner&quot;&gt;inner view&lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，如果我们点击 inner view 这个组件，照样会触发 handleTap 事件，然后我们按照以往习惯地用长度比较短的 target 对象去拿我们绑定的属性，但是你会发现取不到 hi 这个属性！然后你又点了一下 outer view，这时候有见鬼了，又可以拿到 hi 这个属性了！（<em>百思不得其解，看来这个 target 对象不稳定啊，还是用 currentTarget 对象会可靠点</em>）以前的想法就是这样，拿参数只用 currentTarget 对象。但是我们现在知道原理了，用起来就好办很多了。<br>下面是点击 inner view 得到的参数：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tap&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;timeStamp&quot;</span><span class="punctuation">:</span> <span class="number">2083</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;target&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;inner&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetLeft&quot;</span><span class="punctuation">:</span> <span class="number">140</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetTop&quot;</span><span class="punctuation">:</span> <span class="number">459</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;dataset&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;currentTarget&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;outer&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetLeft&quot;</span><span class="punctuation">:</span> <span class="number">140</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetTop&quot;</span><span class="punctuation">:</span> <span class="number">434</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;dataset&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;hi&quot;</span><span class="punctuation">:</span> <span class="string">&quot;outer&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    ... 省略无关部分 ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是点击 outer view 得到的参数：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tap&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;timeStamp&quot;</span><span class="punctuation">:</span> <span class="number">2083</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;target&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;inner&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetLeft&quot;</span><span class="punctuation">:</span> <span class="number">140</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetTop&quot;</span><span class="punctuation">:</span> <span class="number">459</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;dataset&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;hi&quot;</span><span class="punctuation">:</span> <span class="string">&quot;outer&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;currentTarget&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;outer&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetLeft&quot;</span><span class="punctuation">:</span> <span class="number">140</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;offsetTop&quot;</span><span class="punctuation">:</span> <span class="number">434</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;dataset&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;hi&quot;</span><span class="punctuation">:</span> <span class="string">&quot;outer&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    ... 省略无关部分 ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里结果验证的正是我前面所说的结论，如果还没理解，那就多看几遍吧。</p>
+<h3 id="巧用-target-和-currentTarget-对象"><a href="#巧用-target-和-currentTarget-对象" class="headerlink" title="巧用 target 和 currentTarget 对象"></a>巧用 target 和 currentTarget 对象</h3><ul>
+<li>一般情况下，建议只使用 currentTarget 对象，因为它能拿到我们想要的参数属性</li>
+<li>如果我们需要获取不同子组件绑定的属性，比如点击某个组件拿到该组件上绑定的属性，才用 target 对象</li>
+<li>具体应用有待挖掘，回到上面的自定义弹窗，我们点击子容器时可以在隐藏弹窗事件里通过 target 对象拿到子容器上绑定的属性</li>
+</ul>
+<h2 id="三、思考（引伸）"><a href="#三、思考（引伸）" class="headerlink" title="三、思考（引伸）"></a>三、思考（引伸）</h2><p>1、 data- 开头的属性书写方式需要注意的地方：以data- 开头，多个单词由连字符-链接，不能有大写(大写会自动转成小写)如 data-element-type，最终在 event.currentTarget.dataset 中会将连字符转成驼峰 elementType。下面是一个简单的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view data-alpha-beta=&quot;1&quot; data-alphaBeta=&quot;2&quot; bindtap=&quot;bindViewTap&quot;&gt;</span><br><span class="line">  DataSet Test</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="title function_">bindViewTap</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">currentTarget</span>.<span class="property">dataset</span>.<span class="property">alphaBeta</span>) <span class="comment">// 1 (- 会转为驼峰写法)</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">currentTarget</span>.<span class="property">dataset</span>.<span class="property">alphabeta</span>) <span class="comment">// 2 (大写会转为小写)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、 在前面参数 e 的对象里面的 detail 对象一般是用来取表单数据，比如在 input 组件上的 value 属性，绑定事件里可以通过 detail.value 拿到。（<em>关于 input 组件的详解，敬请期待</em>）</p>
+<h2 id="四、参考链接"><a href="#四、参考链接" class="headerlink" title="四、参考链接"></a>四、参考链接</h2><ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html">事件·小程序</a></li>
+</ul>
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-bind-%E5%92%8C-catch-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">一、 bind 和 catch 有什么区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A7%E7%94%A8-bind-%E5%92%8C-catch-%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6"><span class="toc-text">巧用 bind 和 catch 绑定事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-target-%E5%92%8C-currentTarget-%E6%9C%89%E4%BB%80%E4%B9%88%E5%B7%AE%E5%BC%82"><span class="toc-text">二、 target 和 currentTarget 有什么差异</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A7%E7%94%A8-target-%E5%92%8C-currentTarget-%E5%AF%B9%E8%B1%A1"><span class="toc-text">巧用 target 和 currentTarget 对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%9D%E8%80%83%EF%BC%88%E5%BC%95%E4%BC%B8%EF%BC%89"><span class="toc-text">三、思考（引伸）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">四、参考链接</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/%E4%BA%8B%E4%BB%B6/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><i class="fa fa-tags"></i>微信小程序</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/%E6%97%B6%E9%92%9F/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%E3%80%81%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>

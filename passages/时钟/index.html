@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Thinker Zhang" />
+  
+  
+  <title>时钟 | Thinker的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="css," />
+  
+
+  
+  <meta name="description" content="Thinker Zhang的小站">
+
+  
+
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"3DJIWpp6Ir4cJ5wVjuToG1Xy-gzGzoHsz","appkey":"6irMIucIxCbVlXXfHjtIzfbG","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2019-03-15",
+    passwords: ["fdbb19a3036a0a0d94364067f7c2d548a7dd14cdd2675226c41fc4c4af86537b", ],
+    is_post: true,
+    lock: false,
+    author: "Thinker Zhang",
+    share: {"twitter":false,"facebook":false,"weibo":false,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  
+<script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Thinker</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | Make a Thinker!</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shiyuanjieyi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-03-27
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    时钟
+  </h1>
+  
+  <article class="passage-article">
+    <blockquote>
+<p>译者注：本文内容为 <a href="https://cssanimation.rocks/clocks/">Clocks - CSS Animation</a> 的译文</p>
+<p>译者在编写文章过程中写了 <a href="https://github.com/Thinker-z/clocks">一份最终效果（iOS7 风格）源代码</a> 供大家参考</p>
+</blockquote>
+<h2 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h2><p>这是关于时间的。在本文中，我们将接受创建和设置时钟动画的挑战，使用简单的CSS动画和JavaScript来触发它们。</p>
+<p>这是我们使用HTML，CSS，SVG背景和一些JavaScript创建的时钟。我们将使用CSS动画或过渡进行任何移动，并依靠JavaScript来设置初始时间并添加基本的CSS变换。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692db612de5ebde~tplv-t2oaga2asx-image.image" alt="1"></p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>要开始使用，我们需要一些HTML。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">&quot;clock&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hours-container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hours&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;minutes-container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;minutes&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;seconds-container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;seconds&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我最初的方法是为每只指针使用三个元素。然后我回去把每个包装在一个容器元素中。虽然简单的HTML可以用于基本的CSS动画，但是当我们想要定位指针并为它们制作动画时，我们还需要包含元素。</p>
+<h2 id="钟面"><a href="#钟面" class="headerlink" title="钟面"></a>钟面</h2><p>我们将从一个基本的时钟设计开始，圆脸，简单的小时，分钟和秒针。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clock</span> &#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span> <span class="built_in">url</span>(<span class="string">/images/posts/clocks/ios_clock.svg</span>) no-repeat center;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">88%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20em</span>;</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="number">31%</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">20em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clock</span><span class="selector-class">.simple</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你可以<a href="https://cssanimation.rocks/images/posts/clocks/ios_clock.svg">在这里获得SVG背景</a>。我还添加了一个伪元素来向中心添加一个纯黑色圆圈。然后可以根据需要将时钟的指针放在该伪元素后面。</p>
+<p>我们现在应该有这样的结果。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dbfa113ccfb9~tplv-t2oaga2asx-image.image" alt="2"></p>
+<p>在添加指针之前，我们需要放置容器。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.minutes-container</span>, <span class="selector-class">.hours-container</span>, <span class="selector-class">.seconds-container</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这会将每个容器堆叠在时钟之上。接下来我们创造指针。</p>
+<h2 id="时针"><a href="#时针" class="headerlink" title="时针"></a>时针</h2><p>每只指针都被赋予<code>absolute</code>属性值并放置在十二点钟位置。我们将从时针开始。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hours</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">48.75%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">30%</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: <span class="number">50%</span> <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">2.5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我正在使用百分比来简化时钟缩放。这是一项复杂的工作，但能让它们更容易适应视图或缩小手机。我们还将<code>transform-origin</code>属性设置为指针的底部，以便以后可以旋转。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dc683a1d514d~tplv-t2oaga2asx-image.image" alt="3"></p>
+<h2 id="分针"><a href="#分针" class="headerlink" title="分针"></a>分针</h2><p>分针跟时针类似，但更长更细。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.minutes</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">49%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">10%</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: <span class="number">50%</span> <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">2%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dc962ecc2595~tplv-t2oaga2asx-image.image" alt="4"></p>
+<h2 id="秒针"><a href="#秒针" class="headerlink" title="秒针"></a>秒针</h2><p>秒针再次变细，但也进一步向下设置，使其比中心延伸得更远。为此，<code>transform-origin</code>为80％。这使得20％的手伸出中心。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.seconds</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">45%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">49.5%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">14%</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: <span class="number">50%</span> <span class="number">80%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1%</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">8</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dcb3bfeb8143~tplv-t2oaga2asx-image.image" alt="5"></p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>停止的时钟每天只能正确两次。让我们添加一些动画来让时钟表现得更像真实的东西。</p>
+<p>有些时钟会随着每秒跳跃，通常会产生滴答声。有些时钟会随着手的平稳移动而发出呜呜声。我们两个都试试。首先，我们会让双手平稳移动。</p>
+<p>我们可以使用一个<code>keyframe</code>来指示手在360度左右移动（暗示0％的起始位置）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rotate &#123;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">360deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用<code>animation</code>属性应用于元素，则此关键帧会告诉元素在360度左右设置动画。我们将在指针上使用<code>linear</code>计时功能，使指针平稳移动。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hours-container</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: rotate <span class="number">43200s</span> infinite linear;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.minutes-container</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: rotate <span class="number">3600s</span> infinite linear;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seconds-container</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: rotate <span class="number">60s</span> infinite linear;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时针设置为每12小时（43,400秒）旋转一次。分针每小时旋转一次，秒针每分钟旋转一次。</p>
+<p>把它放在一起，我们现在有运动！</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dd6553d04c3e~tplv-t2oaga2asx-image.image" alt="6"></p>
+<p>如果你的眼睛非常敏锐，你甚至可以让分针移动。它需要一个小时才能完成一个旋转，十二个小时的时间来完成它的循环。</p>
+<p>秒针需要60秒，因此更容易注意到。</p>
+<h2 id="添加停顿"><a href="#添加停顿" class="headerlink" title="添加停顿"></a>添加停顿</h2><p>通过让秒针在60个单独的动作中全天候移动，我们可以让指针更像普通时钟。实现此目的的一种简单方法是使用<code>steps</code>计时功能。然后每只指针的<code>animation</code>属性变为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.minutes-container</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: rotate <span class="number">3600s</span> infinite <span class="built_in">steps</span>(<span class="number">60</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seconds-container</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: rotate <span class="number">60s</span> infinite <span class="built_in">steps</span>(<span class="number">60</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分针和秒针现在分六步走动。浏览器会自动计算这60个步骤中的每个步骤移动的距离。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dddfc3ee470d~tplv-t2oaga2asx-image.image" alt="7"></p>
+<h2 id="正确的时间"><a href="#正确的时间" class="headerlink" title="正确的时间"></a>正确的时间</h2><p>一切都很好，时间看起来不错，但准确度如何呢？使用一点JavaScript，我们可以让时间对我们的访问者来说是正确的。这是代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Starts any clocks using the user&#x27;s local time</span></span><br><span class="line"><span class="comment"> * From: cssanimation.rocks/clocks</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">initLocalClocks</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// Get the local time using JS</span></span><br><span class="line">  <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>;</span><br><span class="line">  <span class="keyword">var</span> seconds = date.<span class="title function_">getSeconds</span>();</span><br><span class="line">  <span class="keyword">var</span> minutes = date.<span class="title function_">getMinutes</span>();</span><br><span class="line">  <span class="keyword">var</span> hours = date.<span class="title function_">getHours</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Create an object with each hand and it&#x27;s angle in degrees</span></span><br><span class="line">  <span class="keyword">var</span> hands = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">hand</span>: <span class="string">&#x27;hours&#x27;</span>,</span><br><span class="line">      <span class="attr">angle</span>: (hours * <span class="number">30</span>) + (minutes / <span class="number">2</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">hand</span>: <span class="string">&#x27;minutes&#x27;</span>,</span><br><span class="line">      <span class="attr">angle</span>: (minutes * <span class="number">6</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">hand</span>: <span class="string">&#x27;seconds&#x27;</span>,</span><br><span class="line">      <span class="attr">angle</span>: (seconds * <span class="number">6</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  ];</span><br><span class="line">  <span class="comment">// Loop through each of these hands to set their angle</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; hands.<span class="property">length</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">var</span> elements = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.&#x27;</span> + hands[j].<span class="property">hand</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; elements.<span class="property">length</span>; k++) &#123;</span><br><span class="line">        elements[k].<span class="property">style</span>.<span class="property">webkitTransform</span> = <span class="string">&#x27;rotateZ(&#x27;</span>+ hands[j].<span class="property">angle</span> +<span class="string">&#x27;deg)&#x27;</span>;</span><br><span class="line">        elements[k].<span class="property">style</span>.<span class="property">transform</span> = <span class="string">&#x27;rotateZ(&#x27;</span>+ hands[j].<span class="property">angle</span> +<span class="string">&#x27;deg)&#x27;</span>;</span><br><span class="line">        <span class="comment">// If this is a minute hand, note the seconds position (to calculate minute position later)</span></span><br><span class="line">        <span class="keyword">if</span> (hands[j].<span class="property">hand</span> === <span class="string">&#x27;minutes&#x27;</span>) &#123;</span><br><span class="line">          elements[k].<span class="property">parentNode</span>.<span class="title function_">setAttribute</span>(<span class="string">&#x27;data-second-angle&#x27;</span>, hands[j + <span class="number">1</span>].<span class="property">angle</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此功能将时间（小时，分钟和秒）转换为每只指针的相应角度。然后循环遍历每只手并使用<code>rotateZ</code>的<code>style.transform</code>属性应用该角度。</p>
+<p>这适用于除Safari或其他需要前缀的浏览器之外的大多数浏览器。为此，我们还使用了<code>style.webkitTransform</code>属性。</p>
+<p>然后，将时钟设置为当前系统时间。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692de32862ec33c~tplv-t2oaga2asx-image.image" alt="8"></p>
+<h2 id="对齐秒针和分针"><a href="#对齐秒针和分针" class="headerlink" title="对齐秒针和分针"></a>对齐秒针和分针</h2><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692de44284deb72~tplv-t2oaga2asx-image.image" alt="9"></p>
+<p>当首次在屏幕上绘制时钟时，在分针需要移动之前不到一分钟。为了实现这一点，我们可以计算出第一分钟结束的时间并手动轻推分针。由于我们使用JavaScript进行第一次移动，我们可以使用<code>setInterval</code>每分钟继续旋转6度。</p>
+<p>在我们移动分针之前，我们需要告知我们当前的分钟数。您可能已经注意到这些线条。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (hands[j].<span class="property">hand</span> === <span class="string">&#x27;minutes&#x27;</span>) &#123;</span><br><span class="line">  elements[k].<span class="property">parentNode</span>.<span class="title function_">setAttribute</span>(<span class="string">&#x27;data-second-angle&#x27;</span>, hands[j + <span class="number">1</span>].<span class="property">angle</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这些额外的行检查指针是否是“分钟”指针，如果是，则使用秒针的当前角度设置数据属性。</p>
+<p>使用此数据属性集，我们可以使用此数据计算何时移动分针。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Set a timeout for the first minute hand movement (less than 1 minute), then rotate it every minute after that</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setUpMinuteHands</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// Find out how far into the minute we are</span></span><br><span class="line">  <span class="keyword">var</span> containers = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.minutes-container&#x27;</span>);</span><br><span class="line">  <span class="keyword">var</span> secondAngle = containers[<span class="number">0</span>].<span class="title function_">getAttribute</span>(<span class="string">&quot;data-second-angle&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (secondAngle &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// Set a timeout until the end of the current minute, to move the hand</span></span><br><span class="line">    <span class="keyword">var</span> delay = (((<span class="number">360</span> - secondAngle) / <span class="number">6</span>) + <span class="number">0.1</span>) * <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">moveMinuteHands</span>(containers);</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Do the first minute&#x27;s rotation</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">moveMinuteHands</span>(<span class="params">containers</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; containers.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    containers[i].<span class="property">style</span>.<span class="property">webkitTransform</span> = <span class="string">&#x27;rotateZ(6deg)&#x27;</span>;</span><br><span class="line">    containers[i].<span class="property">style</span>.<span class="property">transform</span> = <span class="string">&#x27;rotateZ(6deg)&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Then continue with a 60 second interval</span></span><br><span class="line">  <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; containers.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (containers[i].<span class="property">angle</span> === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        containers[i].<span class="property">angle</span> = <span class="number">12</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        containers[i].<span class="property">angle</span> += <span class="number">6</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      containers[i].<span class="property">style</span>.<span class="property">webkitTransform</span> = <span class="string">&#x27;rotateZ(&#x27;</span>+ containers[i].<span class="property">angle</span> +<span class="string">&#x27;deg)&#x27;</span>;</span><br><span class="line">      containers[i].<span class="property">style</span>.<span class="property">transform</span> = <span class="string">&#x27;rotateZ(&#x27;</span>+ containers[i].<span class="property">angle</span> +<span class="string">&#x27;deg)&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">60000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加弹跳"><a href="#添加弹跳" class="headerlink" title="添加弹跳"></a>添加弹跳</h2><p>由于我们现在使用JavaScript来移动分针，我们应该删除动画属性。我们可以用过渡替换它，而不是简单地删除它。这是一个为动画添加更多角色的机会。</p>
+<p>当JavaScript为手设置新角度时，元素上的CSS转换将告诉浏览器为此新位置设置动画。这意味着JavaScript只处理简单的角度变化，浏览器可以处理它的动画。</p>
+<p>在我们这样做之前，我们应该更新代码以使用JavaScript来移动秒针。让我们使用此代码为秒针容器设置动画，每分钟动画60次。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Move the second containers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">moveSecondHands</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> containers = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.seconds-container&#x27;</span>);</span><br><span class="line">  <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; containers.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (containers[i].<span class="property">angle</span> === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        containers[i].<span class="property">angle</span> = <span class="number">6</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        containers[i].<span class="property">angle</span> += <span class="number">6</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      containers[i].<span class="property">style</span>.<span class="property">webkitTransform</span> = <span class="string">&#x27;rotateZ(&#x27;</span>+ containers[i].<span class="property">angle</span> +<span class="string">&#x27;deg)&#x27;</span>;</span><br><span class="line">      containers[i].<span class="property">style</span>.<span class="property">transform</span> = <span class="string">&#x27;rotateZ(&#x27;</span>+ containers[i].<span class="property">angle</span> +<span class="string">&#x27;deg)&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过JavaScript处理秒针和分针，更新CSS以使用<code>transitions</code>替换<code>animation</code>属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.minutes-container</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: transform <span class="number">0.3s</span> <span class="built_in">cubic-bezier</span>(.<span class="number">4</span>,<span class="number">2.08</span>,.<span class="number">55</span>,.<span class="number">44</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seconds-container</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: transform <span class="number">0.2s</span> <span class="built_in">cubic-bezier</span>(.<span class="number">4</span>,<span class="number">2.08</span>,.<span class="number">55</span>,.<span class="number">44</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这些转换适用于<code>transform</code>属性并使用<code>cubic-bezier</code>定时函数。这个计时功能让秒针有些反弹。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692df4ce5365156~tplv-t2oaga2asx-image.image" alt="10"></p>
+<h2 id="iOS7-风格"><a href="#iOS7-风格" class="headerlink" title="iOS7 风格"></a>iOS7 风格</h2><p>我非常喜欢Apple iOS 7中使用的时钟的简单性。他们已经伸长了指针，但我更喜欢较短的版本。</p>
+<p>通过设计针部样式并添加带有数字的背景图像，我们可以轻松创建此外观。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692df846aab24d8~tplv-t2oaga2asx-image.image" alt="11"></p>
+<p>这种设计本身就是Hans Hilfiker对<a href="https://www.youtube.com/watch?v=IvIvKiDWDks">瑞士铁路时钟</a>的演变。通过改变一些样式并添加新的背景图像，我们可以使我们的时钟适应这种风格。</p>
+<p>如果您想出其他设计，请告诉我。</p>
+<h2 id="使用-Moment-js"><a href="#使用-Moment-js" class="headerlink" title="使用 Moment.js"></a>使用 Moment.js</h2><p>我计划这篇文章的第一个想法之一是重建酒店钟表场景，三个时钟显示不同的时区。</p>
+<p>调整不同时区的最简单方法是使用令人惊叹的<a href="http://momentjs.com/timezone/">Moment.js 时区库</a>。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/2/27/1692dfd05f232249~tplv-t2oaga2asx-image.image" alt="12"></p>
+<p>您可以在此<a href="https://codepen.io/donovanh/full/vEjywy/">Codepen</a>上查看代码。</p>
+<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><p>现代浏览器可以处理所涉及的CSS过渡和动画。 IE10 +，最近的Chrome和Firefox支持它们没有前缀，Safari需要<code>-webkit</code>前缀。</p>
+<p>不要忘记在JavaScript中使用前缀属性。</p>
+<p>（完）</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F"><span class="toc-text">时钟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%9F%E9%9D%A2"><span class="toc-text">钟面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%88"><span class="toc-text">时针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%92%88"><span class="toc-text">分针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%92%E9%92%88"><span class="toc-text">秒针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-text">动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%81%9C%E9%A1%BF"><span class="toc-text">添加停顿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%97%B6%E9%97%B4"><span class="toc-text">正确的时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E7%A7%92%E9%92%88%E5%92%8C%E5%88%86%E9%92%88"><span class="toc-text">对齐秒针和分针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%B9%E8%B7%B3"><span class="toc-text">添加弹跳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS7-%E9%A3%8E%E6%A0%BC"><span class="toc-text">iOS7 风格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Moment-js"><span class="toc-text">使用 Moment.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">浏览器兼容性</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Thinker Zhang</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://shiyuanjieyi.cn/passages/%E6%97%B6%E9%92%9F/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/css/"><i class="fa fa-tags"></i>css</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">我的博客</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5bc845636fb9a05ce576d197" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/thinker_5bbd7a1a5936d" target="_blank">思否</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/11edad8e2066" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://me.csdn.net/shiyuanjieyi" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 15521090614@163.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.jpg" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.jpg" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/%E5%A4%A7%E7%99%BD/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/%E4%BA%8B%E4%BB%B6/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+
+    
+  </body>
+</html>
